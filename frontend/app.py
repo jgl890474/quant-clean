@@ -5,15 +5,15 @@ import time
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Try to load data module
+# 尝试加载数据模块
 data_ok = False
 try:
     from data.market_data import get_1min_kline, get_historical_klines
     data_ok = True
 except Exception as e:
-    st.error(f"Data module load failed: {e}")
+    st.error(f"数据模块加载失败: {e}")
 
-st.set_page_config(page_title="Quant Trading System", layout="wide")
+st.set_page_config(page_title="量化交易系统", layout="wide")
 
 st.markdown("""
 <style>
@@ -24,10 +24,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("Quant Trading System v5.0")
-st.caption("Multi-Category · Multi-Strategy · AI Auto Trading")
+st.title("📊 量化交易系统 v5.0")
+st.caption("多类目 · 多策略 · AI自动交易")
 
-# Get real price
+# 获取实时价格
 price = 1.085
 if data_ok:
     try:
@@ -38,18 +38,18 @@ if data_ok:
         pass
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Assets", "$100,000")
-col2.metric("Latest Price", f"{price:.5f}")
-col3.metric("Update Time", time.strftime("%Y-%m-%d %H:%M:%S"))
+col1.metric("💰 总资产", "$100,000")
+col2.metric("💹 最新价格", f"{price:.5f}")
+col3.metric("🕒 更新时间", time.strftime("%Y-%m-%d %H:%M:%S"))
 
-st.subheader("Strategy Status")
-st.success(f"System Ready | Current Price: {price}")
+st.subheader("📈 策略运行状态")
+st.success(f"✅ 系统已就绪 | 当前价格: {price}")
 
-tab1, tab2 = st.tabs(["Strategy List", "Configuration"])
+tab1, tab2 = st.tabs(["📋 策略列表", "⚙️ 配置"])
 with tab1:
-    st.write("1. Futures Trend Strategy (GC=F)")
-    st.write("2. Futures Mean Reversion (CL=F)")
-    st.write("3. Forex Carry Trade (AUDJPY)")
-    st.write("4. Forex Breakout Strategy (EURUSD)")
+    st.write("1. 期货趋势策略 (GC=F)")
+    st.write("2. 期货均值回归 (CL=F)")
+    st.write("3. 外汇利差交易 (AUDJPY)")
+    st.write("4. 外汇突破策略 (EURUSD)")
 with tab2:
-    st.info("Backend running | Auto deploy from GitHub")
+    st.info("后台引擎运行中 | 推送 GitHub 自动部署")
