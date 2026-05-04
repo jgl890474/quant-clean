@@ -9,11 +9,11 @@ import time
 def get_forex_rate_yf(symbol="EURUSD=X"):
     """
     使用 yfinance 获取外汇汇率
-    symbol: EURUSD=X, GBPUSD=X, AUDJPY=X, USDJPY=X 等
+    symbol: EURUSD=X, GBPUSD=X, AUDJPY=X, USDJPY=X �?
     """
     try:
         ticker = yf.Ticker(symbol)
-        # 获取最近1分钟数据
+        # 获取最�?分钟数据
         data = ticker.history(period="1d", interval="1m")
         if data is not None and len(data) > 0:
             latest = data.iloc[-1]
@@ -47,7 +47,7 @@ def get_forex_rate_yf(symbol="EURUSD=X"):
 def get_futures_quote_yf(symbol="GC=F"):
     """
     使用 yfinance 获取期货行情
-    symbol: GC=F(黄金), CL=F(原油), SI=F(白银) 等
+    symbol: GC=F(黄金), CL=F(原油), SI=F(白银) �?
     """
     try:
         ticker = yf.Ticker(symbol)
@@ -84,7 +84,7 @@ def get_futures_quote_yf(symbol="GC=F"):
 def get_crypto_price(symbol="BTC-USD"):
     """
     使用 yfinance 获取加密货币价格
-    symbol: BTC-USD, ETH-USD 等
+    symbol: BTC-USD, ETH-USD �?
     """
     try:
         ticker = yf.Ticker(symbol)
@@ -116,10 +116,10 @@ def get_crypto_price(symbol="BTC-USD"):
         "source": "simulated"
     }
 
-# ================== 统一获取1分钟K线接口 ==================
+# ================== 统一获取1分钟K线接�?==================
 def get_1min_kline(symbol="BTC-USD"):
     """
-    统一获取1分钟K线接口
+    统一获取1分钟K线接�?
     支持格式:
       - 加密货币: BTC-USD, ETH-USD
       - 外汇: EURUSD=X, GBPUSD=X, AUDJPY=X
@@ -154,10 +154,10 @@ def get_1min_kline(symbol="BTC-USD"):
         "source": "simulated"
     }
 
-# ================== 获取历史K线数据 ==================
+# ================== 获取历史K线数�?==================
 def get_historical_klines(symbol="BTC-USD", count=50):
     try:
-        # 格式化 symbol
+        # 格式�?symbol
         if symbol == "BTCUSDT":
             symbol = "BTC-USD"
         elif symbol in ["EURUSD", "GBPUSD", "AUDJPY"]:
@@ -176,7 +176,7 @@ def get_historical_klines(symbol="BTC-USD", count=50):
                 })
             return result
     except Exception as e:
-        print(f"获取历史K线失败: {e}")
+        print(f"获取历史K线失�? {e}")
     
     # 生成模拟历史数据
     result = []

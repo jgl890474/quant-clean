@@ -2,9 +2,9 @@ import requests
 import urllib3
 urllib3.disable_warnings()
 
-# 关键修改：把原来的 EURUSD 换成 DEMO_EURUSD
+# 关键修改：把原来�?EURUSD 换成 DEMO_EURUSD
 # 演示产品代码请从Dashboard查看
-symbol = "DEMO_EURUSD"   # ✅ 免费账号可用的演示产品
+symbol = "DEMO_EURUSD"   # �?免费账号可用的演示产�?
 
 # 其他参数保持不变
 query_data = {

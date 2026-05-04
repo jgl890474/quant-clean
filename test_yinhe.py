@@ -11,7 +11,7 @@ try:
 except Exception as e:
     print(f"期货接口错误: {e}")
 
-# 方法2：直接使用 AkShare 获取外汇数据
+# 方法2：直接使�?AkShare 获取外汇数据
 print("\n2. 通过 AkShare 获取外汇数据...")
 try:
     # 外汇实时汇率
@@ -20,10 +20,10 @@ try:
 except Exception as e:
     print(f"外汇接口错误: {e}")
 
-# 方法3：获取加密货币数据（通过 AkShare）
+# 方法3：获取加密货币数据（通过 AkShare�?
 print("\n3. 通过 AkShare 获取加密货币数据...")
 try:
-    # 比特币实时行情
+    # 比特币实时行�?
     btc = ak.crypto_js_spot(symbol="BTC")
     print(f"BTC 数据: {btc}")
 except Exception as e:

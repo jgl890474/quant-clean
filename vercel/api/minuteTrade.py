@@ -34,7 +34,7 @@ def get_1min_kline(symbol="EURUSD"):
                 "timestamp": k["timestamp"]
             }
     except Exception as e:
-        print(f"获取K线失败: {e}")
+        print(f"获取K线失�? {e}")
     return None
 
 class BaseStrategy:
@@ -82,11 +82,11 @@ def call_deepseek_arbitrage(signals, current_price):
     if not DEEPSEEK_API_KEY:
         return "hold"
     signals_text = "\n".join([f"- {name}: {signal}" for name, signal in signals.items()])
-    prompt = f"""你是一个量化交易AI仲裁者。
+    prompt = f"""你是一个量化交易AI仲裁者�?
 当前价格: {current_price}
-各策略信号:
+各策略信�?
 {signals_text}
-请综合判断后只输出一个词：buy 或 sell 或 hold。"""
+请综合判断后只输出一个词：buy �?sell �?hold�?""
     try:
         resp = requests.post(
             "https://api.deepseek.com/v1/chat/completions",
