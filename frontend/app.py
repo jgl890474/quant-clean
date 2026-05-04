@@ -1,20 +1,19 @@
-# -*- coding: utf-8 -*-
 import streamlit as st
 import sys
 import os
+import time
 
-# 添加路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# 尝试导入数据模块
+# Try to load data module
+data_ok = False
 try:
-    from 数据.market_data import get_1min_kline, get_historical_klines
+    from data.market_data import get_1min_kline, get_historical_klines
     data_ok = True
 except Exception as e:
-    data_ok = False
-    st.error(f"数据模块加载失败: {e}")
+    st.error(f"Data module load failed: {e}")
 
-st.set_page_config(page_title="量化交易系统", layout="wide")
+st.set_page_config(page_title="Quant Trading System", layout="wide")
 
 st.markdown("""
 <style>
@@ -25,32 +24,32 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 量化交易系统 v5.0")
-st.caption("多类�?· 多策�?· AI自动交易")
+st.title("Quant Trading System v5.0")
+st.caption("Multi-Category · Multi-Strategy · AI Auto Trading")
 
-# 获取真实价格
+# Get real price
+price = 1.085
 if data_ok:
     try:
         kline = get_1min_kline("EURUSD")
-        price = kline.get('close', 1.085) if kline else 1.085
+        if kline:
+            price = kline.get('close', 1.085)
     except:
-        price = 1.085
-else:
-    price = 1.085
+        pass
 
 col1, col2, col3 = st.columns(3)
-col1.metric("💰 总资�?, "$100,000")
-col2.metric("💹 最新价�?, f"{price:.5f}")
-col3.metric("🕒 更新时间", __import__('time').strftime("%Y-%m-%d %H:%M:%S"))
+col1.metric("Total Assets", "$100,000")
+col2.metric("Latest Price", f"{price:.5f}")
+col3.metric("Update Time", time.strftime("%Y-%m-%d %H:%M:%S"))
 
-st.subheader("📈 策略运行状�?)
-st.success(f"�?系统已就�?| 当前价格: {price}")
+st.subheader("Strategy Status")
+st.success(f"System Ready | Current Price: {price}")
 
-tab1, tab2 = st.tabs(["📋 策略列表", "⚙️ 配置"])
+tab1, tab2 = st.tabs(["Strategy List", "Configuration"])
 with tab1:
-    st.write("1. 期货趋势策略 (GC=F)")
-    st.write("2. 期货均值回�?(CL=F)")
-    st.write("3. 外汇利差交易 (AUDJPY)")
-    st.write("4. 外汇突破策略 (EURUSD)")
+    st.write("1. Futures Trend Strategy (GC=F)")
+    st.write("2. Futures Mean Reversion (CL=F)")
+    st.write("3. Forex Carry Trade (AUDJPY)")
+    st.write("4. Forex Breakout Strategy (EURUSD)")
 with tab2:
-    st.info("后台引擎运行�?| 推�?GitHub 自动部署")
+    st.info("Backend running | Auto deploy from GitHub")
